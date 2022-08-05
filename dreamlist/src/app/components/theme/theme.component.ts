@@ -12,4 +12,7 @@ export class ThemeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  theme(theme: any){
+    document.getElementById('hold')?.setAttribute('data-theme', theme)
+  }
 }
