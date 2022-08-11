@@ -4,12 +4,15 @@ import { JournalComponent } from './components/journal/journal.component';
 import { LoginComponent } from './components/login/login.component';
 import { MenusideComponent } from './components/menuside/menuside.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { TodayComponent } from './today/today.component';
+import { RegisterComponent } from './components/register/register.component';
+import { TodayComponent } from './components/today/today.component';
 
 const routes: Routes = [
   {path:'journal',component:JournalComponent},
   {path:'today',component:TodayComponent},
-  {path: 'menuside',component:MenusideComponent},  
+  {path:'menuside',component:MenusideComponent},
+  {path:'register',component:RegisterComponent},  
+  {path:'login',component:LoginComponent}, 
   {path:'',component:TodayComponent}
 ];
 

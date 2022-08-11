@@ -11,7 +11,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 })
 export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    fullname: new FormControl(''),
+    firstname: new FormControl(''),
     username: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
     this.form = this.formBuilder.group(
       {
-        fullname: ['', Validators.required],
+        firstname: ['', Validators.required],
         username: [
           '',
           [

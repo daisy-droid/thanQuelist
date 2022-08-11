@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
 
   deleteProduct(){
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete ' + 'epeleng?',
+      message: 'Are you sure you want to delete ' + 'Ipeleng?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
