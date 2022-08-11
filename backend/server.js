@@ -1,6 +1,6 @@
-require ('dotenv').config()  
+require('dotenv').config()
 
-const express= require('express');
+const express = require('express');
 const client = require('./app/config/db');
 const app = express();
 const bodyparser = require('body-parser');
@@ -9,41 +9,41 @@ const cors = require('cors');
 
 //require("./app/config/dotenv"); //Import your environmental configs
 
-const user = require("./app/routes/userRoutes");
 
 
 
 app.use(express.json());
 app.use(cors());
 
-app.get('/', function (req, res) {
-    res.send('hello');
-  });
-
- client.connect((err)=>{
+client.connect((err) => {
     //connect to database
-    if(err){
+    if (err) {
         console.log(err)
     }
-    else{
+    else {
         console.log("We have a lift off");
     }
- });
-
-const PORT =process.env.PORT || 3000
-
-app.use('/',(req,res)=>
-{
-    res.json("data: server is working")
-    
-})
-
-app.get("/", (request, response) =>{
-    response.status(200).send("Sever Initialized and Online. Ready to take OFF!");
 });
 
-app.use("/user", user); // User endpoint API
+const PORT = process.env.PORT || 3000
 
-console.log(`server is up at port http://localhost:${PORT}`)
 
-app.listen(3000) , () => console.log('http://localhost:${PORT}')
+app.get("/status", (req, res) => {
+    response.send('running')
+});
+
+const create = require("./app/routes/createcard.route");
+const update = require("./app/routes/updatecard.route");
+const login = require("./app/routes/login.route");
+const register =require("./app/routes/register.route");
+const deletes = require("./app/routes/deletecard.route");
+const getall = require("./app/routes/getall.route");
+
+app.use("/user", update); // User endpoint API
+app.use("/user", create); // User endpoint API
+app.use("/user", login); 
+app.use("/user", register); 
+app.use("/user", deletes);
+app.use("/user", getall);
+
+app.listen(PORT, () => console.log(`server is up at port http://localhost:${PORT}`))

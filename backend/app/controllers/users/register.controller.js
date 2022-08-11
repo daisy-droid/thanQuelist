@@ -1,12 +1,12 @@
 const bcrypt = require("bcrypt");
 
-const pool = require("../../config/database");
+const pool = require("../../config/db");
 
 const jwt = require("jsonwebtoken");
 //Register Function
 
 exports.register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { lastname, firstname, email, password } = req.body;
   try {
     const data = await pool.query(`SELECT * FROM users WHERE email= $1;`, [
       email,
@@ -23,7 +23,9 @@ exports.register = async (req, res) => {
             error: "Sever Error",
           });
         const user = {
-          name,
+
+          lastname, 
+          firstname,
           email,
           password: hash,
         };
@@ -31,8 +33,8 @@ exports.register = async (req, res) => {
 
         //Inserting data into the database
         pool.query(
-          `INSERT INTO users (name, email, password) VALUES ($1,$2,$3);`,
-          [user.name, user.email, user.password],
+          `INSERT INTO users (lastname,firstname, email, password) VALUES ($1,$2,$3,$4);`,
+          [user.lastname,user.firstname, user.email, user.password],
           (err) => {
             if (err) {
               flag = 0; //If user is not inserted is not inserted to database assigning flag as 0/false.
@@ -44,7 +46,7 @@ exports.register = async (req, res) => {
               flag = 1;
               res
                 .status(200)
-                .send({ message: `User called ${name} have been added to the database` });
+                .send({ message: `User called ${firstname} have been added to the database` });
             }
           }
         );
@@ -52,7 +54,7 @@ exports.register = async (req, res) => {
           const token = jwt.sign(
             //Signing a jwt token
             {
-              email: user.email,
+              email: user.email
             },
             process.env.SECRET_KEY
           );

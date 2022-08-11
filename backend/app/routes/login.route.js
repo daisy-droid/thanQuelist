@@ -1,5 +1,4 @@
 const express = require('express')
-const user = require('../controllers/userController')
 const app = express()
 
 
@@ -14,20 +13,8 @@ app.use(bodyparser.json());
 
 
 
-const { register } = require("../controllers/users/register");
-const { login } = require("../controllers/users/login");
-
-
+const { login } = require("../controllers/users/login.controller");
 
 app.post('/login',login)
 
-app.post('/register', register)
-
-a//pp.get('/index', function (req, res) {
-    //res.json({ 'access': true })
-  //})
-
-
-
-  
-  module.exports = app
+module.exports = app
