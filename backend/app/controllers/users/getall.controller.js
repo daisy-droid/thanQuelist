@@ -6,11 +6,12 @@ const app = express.Router()
 const bodyparser = require('body-parser');
 
 //get notes
-exports.returnall = (req, res) => {
+exports.getAll = (req, res) => {
+    const userid =parseInt(req.params.id);
     try {
        // const { userId, title, body } = req.body;
 
-        pool.query('SELECT * FROM notes ORDER BY entryId ASC ', (error,results) => {
+        pool.query('SELECT * FROM notes WHERE userid = $1 ORDER BY entryId ASC ',[userid], (error,results) => {
             if (error) {
                 throw error;
             }

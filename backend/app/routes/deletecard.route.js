@@ -3,6 +3,6 @@ const app = express()
 
 const controller =require('../controllers/users/deletecard.controller')
 
-app.delete('/delete/:entryid', controller.delete);
+app.delete('/delete/:id', controller.delete);
 
 module.exports = app

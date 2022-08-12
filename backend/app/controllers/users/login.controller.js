@@ -13,7 +13,7 @@ exports.login = async (req, res) => {
     const data = await pool.query(`SELECT * FROM users WHERE email= $1;`, [email]); //Veryfying if the user exists in the database
 
     const user = data.rows;
-
+    const userId= user[0].userid;
     if (user.length == 0) {
       res.status(400).json({
 
@@ -39,7 +39,7 @@ exports.login = async (req, res) => {
           data.rows.token = token
           res.status(200).json({
             message: "User signed in!",
-            user,
+            userId,
             token: token,
           });
         }

@@ -33,7 +33,7 @@ exports.register = async (req, res) => {
 
         //Inserting data into the database
         pool.query(
-          `INSERT INTO users (lastname,firstname, email, password) VALUES ($1,$2,$3,$4);`,
+          `INSERT INTO users (lastname,firstname, email, password) VALUES ($1,$2,$3,$4) ;`,
           [user.lastname,user.firstname, user.email, user.password],
           (err) => {
             if (err) {

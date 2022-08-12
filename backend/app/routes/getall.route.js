@@ -10,6 +10,6 @@ app.use(bodyparser.json());
 
 const getall = require("../controllers/users/getall.controller");
 
-//app.get("/returnall", getall);
+app.get("/getAll/:id", getall.getAll);
 
 module.exports=app

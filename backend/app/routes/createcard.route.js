@@ -9,6 +9,6 @@ app.use(bodyparser.json());
 
 const createcard = require("../controllers/users/createcard.controller");
 
-app.post('/createcard', createcard.create)
+app.post('/createcard/:id', createcard.create)
 
 module.exports=app
