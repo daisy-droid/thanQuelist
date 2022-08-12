@@ -11,9 +11,9 @@ export class GetallService {
 
   constructor(private http:HttpClient) { }
 
- getall(){
+ getall(userId:any){
 
-    return this.http.get(`${this.baseurl}/getAll/`);
+    return this.http.get(`${this.baseurl}/getAll/${userId}`,{responseType:"json"});
 
   }
 }

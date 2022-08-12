@@ -10,15 +10,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  baseurl:string = "http://localhost:5050";
+  baseurl:string = "http://localhost:8000";
 
   createUser(body: any){
     return this.http.post(`${this.baseurl}/user/register/`, body);
 
   }
 
-  loguser(body: any):Observable<any>{
-    return this.http.post(`${this.baseurl}/user/login/`, body);
+  loguser(body: any){
+    return this.http.post(`${this.baseurl}/user/login`, body,{responseType: 'json'});
   }
 
   

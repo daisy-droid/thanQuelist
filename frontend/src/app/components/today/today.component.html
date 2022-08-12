@@ -1,26 +1,39 @@
 <div class="flex justify-center">
   <h1 class="text-2xl ss">I'm most thankful for ...</h1>
 </div>
-<div class="grid md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 lg:grid-cols-3 gap-3 justify-center">
-  <div class="card md:w-96 bg-base-200 shadow-xl" *ngFor="let x of card">
-    <div class="card-body">
-      <h2 class="card-title">Card title! <div class="dropdown dropdown-right">
-          <label tabindex="0" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-               class="bi bi-three-dots justify-right" >
+<div class="grid md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1 lg:grid-cols-3 gap-5 justify-center">
+  <div class="card  bg-base-200 w-80 h-40 shadow-xl" *ngFor="let x of card; let num = index">
+    <div class="card-body w-80">
+      <h2 class="card-title">{{x.title}} <div class="dropdown dropdown-right">
+          <label tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="25"
+              class="bi bi-three-dots justify-right">
               <path
                 d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
             </svg></label>
           <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-40">
             <li><a>update</a></li>
-            <li><a>delete</a></li>
+            <label for="my-modal-5" class="btn modal-button" (click)="send(num)">delete</label>
+
           </ul>
         </div>
       </h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
+      <p>{{x.body}}</p>
       <div class="card-actions justify-center">
         <!--<button class="btn btn-primary">Buy Now</button> -->
       </div>
     </div>
   </div>
 
+</div>
+
+<input type="checkbox" id="my-modal-5" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box w-11/12 max-w-5xl">
+    <h3 class="font-bold text-lg">Delete</h3>
+    <p class="py-4">Are you sure you want to delete this card?</p>
+    <div class="modal-action">
+      <label for="my-modal-5" class="btn" (click)="delete()">Yes</label>
+      <label for="my-modal-5" class="btn">No</label>
+    </div>
+  </div>
 </div>

@@ -15,8 +15,8 @@ export class CreatecardService {
 
   constructor(private http:HttpClient) { }
 
-  createCard(data: any){
-    return this.http.post(`${this.baseurl}/createcard/`, data,{responseType:'json'});
+  createCard(data: any,id:any){
+    return this.http.post(`${this.baseurl}/createcard/${id}`, data,{responseType:'json'});
 
   }
 }
