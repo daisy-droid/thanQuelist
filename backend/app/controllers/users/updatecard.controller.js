@@ -5,11 +5,11 @@ exports.update = (req, res) => {
     try {
         const {entryid,title, body } = req.body;
 
-        pool.query('UPDATE notes SET title=$1 , body=$2 WHERE entryid=$3', [title, body,entryid], (error) => {
+        pool.query('UPDATE notes SET title= $1 , body = $2 WHERE entryid=$3', [title, body,entryid], (error) => {
             if (error) {
                 throw error;
             }
-            res.status(200).send(`note created with ID: ${entryid}`);
+            res.status(200).send(`note updated with ID: ${entryid}`);
         });
 
 

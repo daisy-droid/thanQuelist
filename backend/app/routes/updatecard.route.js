@@ -10,6 +10,6 @@ app.use(bodyparser.json());
 
 const updatecard = require("../controllers/users/updatecard.controller");
 
-app.put('/updatecard', updatecard.update)
+app.put('/updatecard/', updatecard.update)
 
 module.exports=app

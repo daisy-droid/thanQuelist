@@ -39,8 +39,10 @@ const register =require("./app/routes/register.route");
 const deletes = require("./app/routes/deletecard.route");
 const getall = require("./app/routes/getall.route");
 
-app.use("/user", update); // User endpoint API
-app.use("/user", create); // User endpoint API
+
+// User endpoint API
+app.use("/user", update); 
+app.use("/user", create); 
 app.use("/user", login); 
 app.use("/user", register); 
 app.use("/user", deletes);

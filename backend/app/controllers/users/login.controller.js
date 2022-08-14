@@ -15,17 +15,20 @@ exports.login = async (req, res) => {
     const user = data.rows;
     const userId= user[0].userid;
     if (user.length == 0) {
-      res.status(400).json({
+      return res.status(400).json({
 
         error: "User is not registerd, Please Sign Up",
       });
 
-    } else {
+    } 
+    
+    else {
+
       bcrypt.compare(password, user[0].password, (err, results) => { // Comparing the hashed password
         if (err) {
-          res.status(500).json({
-            error: "Server Error",
-          });
+         return  res.status(500).json({
+            error: "Server Error"
+          })
 
         } else if (results === true) { //Checking if the credentials match
 
