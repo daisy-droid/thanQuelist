@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { response } from 'express';
+import { NgModel } from '@angular/forms';
 import { CreatecardService } from 'src/app/services/createcard.service';
 import { GetallService } from 'src/app/services/getall.service';
 import { DeletecardService } from 'src/app/services/deletecard.service';

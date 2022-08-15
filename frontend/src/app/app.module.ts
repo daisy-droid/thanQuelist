@@ -12,10 +12,11 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ThemeComponent } from './components/theme/theme.component';
-import { TodayComponent } from './components/today/today.component';
+//import { TodayComponent } from './components/today/today.component';
 import { JournalComponent } from './components/journal/journal.component';
 import { RegisterComponent } from './components/register/register.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { TodayComponent } from './today/today.component';
 
 
 

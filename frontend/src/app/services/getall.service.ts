@@ -13,7 +13,7 @@ export class GetallService {
 
  getall(userId:any){
 
-    return this.http.get(`${this.baseurl}/getAll/${userId}`,{responseType:"json"});
+    return this.http.get(`${this.baseurl}/getAll/${userId}`);
 
   }
 }

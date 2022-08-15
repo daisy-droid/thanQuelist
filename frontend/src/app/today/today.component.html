@@ -11,7 +11,7 @@
                 d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
             </svg></label>
           <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-40">
-            <li><a>update</a></li>
+            <li><a routerLink="/journal/{{x.entryid}}">update</a></li>
             <label for="my-modal-5" class="btn modal-button" (click)="send(num)">delete</label>
 
           </ul>
@@ -37,3 +37,6 @@
     </div>
   </div>
 </div>
+
+
+

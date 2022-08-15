@@ -12,6 +12,5 @@ export class UpdatecardService {
 
   updatecard(entryId: any, data:any){
     return this.http.put(`${this.baseurl}/update/${entryId}`, data,{responseType:'json'}); //passing using params entryid
-
   }
 }

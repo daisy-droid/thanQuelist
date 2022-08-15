@@ -4,21 +4,21 @@
 
 
 <div class="width=50vw" >
-    <form [formGroup] = "Form">
+    
 <div class="form-control">
     <label class="label">
         <span class="label-text">Title</span>
     </label>
-    <input type="text" formControlName="title" placeholder="title" class="input input-bordered" />
+    <input type="text" [(ngModel)]="cardinfo.title" placeholder="title" class="input input-bordered" />
 </div>
 
 <div class="form-control">
     <label class="label">
         <span class="label-text">New entry</span>
     </label>
-    <textarea class="textarea textarea-bordered" formControlName="body" placeholder="entry"></textarea>
+    <textarea class="textarea textarea-bordered" [(ngModel)]="cardinfo.body" placeholder="entry"></textarea>
 </div>
 
 <div><button class="btn btn-wide flex justify-center rr" (click)="create()">Done</button></div>
-</form>
+
 </div>

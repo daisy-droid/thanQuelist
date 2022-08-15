@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import {Router} from '@angular/router' 
 
 @Component({
   selector: 'app-register',
@@ -9,74 +10,74 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({
-    firstname: new FormControl(''),
-    username: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl(''),
-    acceptTerms: new FormControl(false),
-  });
   submitted = false;
+  router: any;
 
   constructor(private formBuilder: FormBuilder, private auth: AuthService) {}
 
-  ngOnInit(): void {
+ 
+  form: FormGroup = new FormGroup({
+    firstname: new FormControl(''),
+    lastname: new FormControl(''),
+    email: new FormControl(''),
+    password: new FormControl(''),
+    conpassword: new FormControl(''),
+});
 
-    this.form = this.formBuilder.group(
-      {
-        firstname: ['', Validators.required],
-        username: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(20)
-          ]
-        ],
-        email: ['', [Validators.required, Validators.email]],
-        password: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(40)
-          ]
-        ],
-        confirmPassword: ['', Validators.required],
-        acceptTerms: [false, Validators.requiredTrue]
-      },
-     
-    );
-  }
+get f() {
+return this.form.controls;
+}
 
-  get f() {
-    return this.form.controls;
-  }
-  //onsubmit fuction to be called on the html
-  onSubmit(): void {
-    this.submitted = true;
-    if (this.form.invalid) {
-      return;
+createuser(): void {
+let users = {
+  data: {
+    firstname: this.form.value.firstname,
+    lastname: this.form.value.lastname,
+    email: this.form.value.email,
+    password: this.form.value.password,
+    conpassword: this.form.value.conpassword,
+  },
+};
+
+if (users.data.password != users.data.conpassword) {
+ alert("Password don't match")
+} else if(this.form.invalid){
+  return;
+}
+else {
+  this.auth.createUser(users.data).subscribe({
+    next: data =>{
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(['/login'], { relativeTo: this.router });
+      alert("Registered in successfully");
+    },
+    error: err =>{
+      alert("You are already registered");
     }
 
-    this.auth.loguser(this.form.value).subscribe(
-      {
-        next: (res: any)=>{
-          console.log(res);
-        },error: (err: any)=>{
-          console.log(err)
-        }
-      }
-    )
+  });
+}
+}
 
-    console.log(JSON.stringify(this.form.value, null, 2));
-  }
+register() {
+this.createuser();
+}
 
-  //this is a reset function to be called in the html as reset button
-  onReset(): void {
-    this.submitted = false;
-    this.form.reset();
-  }
+ngOnInit(): void {
+this.form = this.formBuilder.group({
+  lastname: ['',[Validators.required, Validators.minLength(3)]],
+  firstname: ['',[Validators.required, Validators.minLength(3)]],
+  email: ['', [Validators.email, Validators.minLength(10), Validators.required]],
+  password: ['', [
+    Validators.required,
+    Validators.minLength(8),
+  ]],
+  conpassword: ['', [
+    Validators.required,
+    Validators.minLength(8),
+  ]]
+});
+}
 
 }
